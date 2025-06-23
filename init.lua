@@ -1,7 +1,6 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 vim.keymap.set("n", "d", '"*d')
--- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
@@ -19,7 +18,6 @@ local lazy_config = require "configs.lazy"
 local mini_files_config = require "configs.mini_files"
 local mini_pick_config = require "configs.mini_pick"
 
--- load plugins
 require("lazy").setup({
   {
     "NvChad/NvChad",
@@ -41,7 +39,6 @@ vim.api.nvim_create_user_command("TermHl", function()
   vim.api.nvim_win_set_buf(0, b)
 end, { desc = "Highlights ANSI termcodes in curbuf" })
 
--- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
