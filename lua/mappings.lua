@@ -55,8 +55,8 @@ map("n", "o", "i")
 map("n", ".", "")
 map("n", ",", "")
 
--- local bufmap = function(mode, lhs, rhs)
---   local opts = { buffer = true }
---   vim.keymap.set(mode, lhs, rhs, opts)
--- end
 map("n", "<C-t>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+
+-- VGit mappings
+vim.api.nvim_create_user_command("Logs", "VGit project_logs_preview", { bang = true, desc = "Preview VGit logs" })
+vim.api.nvim_create_user_command("Diff", "VGit project_diff_preview", { bang = true, desc = "Preview VGit diff" })

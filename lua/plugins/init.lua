@@ -10,6 +10,24 @@ return {
   },
 
   {
+    "laytan/cloak.nvim",
+  },
+
+  {
+    "tanvirtin/vgit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "VeryLazy",
+    config = function()
+      vim.schedule(function()
+        require("vgit").setup()
+      end)
+    end,
+  },
+
+  {
     "powerman/vim-plugin-AnsiEsc",
     cmd = "AnsiEsc",
   },
