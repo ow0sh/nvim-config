@@ -18,6 +18,7 @@ local lazy_config = require "configs.lazy"
 local mini_files_config = require "configs.mini_files"
 local mini_pick_config = require "configs.mini_pick"
 local cloak_config = require "configs.cloak"
+-- local jdtls_config = require "configs.jdtls"
 
 require("lazy").setup({
   {
@@ -32,7 +33,7 @@ require("lazy").setup({
 require("mini.files").setup(mini_files_config)
 require("mini.pick").setup(mini_pick_config)
 require("cloak").setup(cloak_config)
-require("go").setup()
+-- require("jdtls").setup(jdtls_config)
 
 vim.api.nvim_create_user_command("TermHl", function()
   local b = vim.api.nvim_create_buf(false, true)
@@ -50,3 +51,16 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+local myHighlights = vim.api.nvim_create_augroup("MyHighlights", { clear = true })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = myHighlights,
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "Govno", { link = "Todo" })
+
+    vim.fn.matchadd("Govno", "GOVNO")
+    vim.fn.matchadd("Govno", "govno")
+  end,
+})

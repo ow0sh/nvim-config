@@ -13,9 +13,9 @@ return {
   -- Use `''` (empty string) to not create one.
   mappings = {
     close = "q",
-    go_in = "<Right>",
+    go_in = "l",
     go_in_plus = "<Enter>",
-    go_out = "<Left>",
+    go_out = "h",
     go_out_plus = "<C+Left>",
     mark_goto = "'",
     mark_set = "m",
