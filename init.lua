@@ -33,6 +33,7 @@ require("lazy").setup({
 require("mini.files").setup(mini_files_config)
 require("mini.pick").setup(mini_pick_config)
 require("cloak").setup(cloak_config)
+require("go").setup()
 -- require("jdtls").setup(jdtls_config)
 
 vim.api.nvim_create_user_command("TermHl", function()
@@ -59,8 +60,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
   pattern = "*",
   callback = function()
     vim.api.nvim_set_hl(0, "Govno", { link = "Todo" })
+    vim.api.nvim_set_hl(0, "Grepme", { link = "Todo" })
 
     vim.fn.matchadd("Govno", "GOVNO")
     vim.fn.matchadd("Govno", "govno")
+
+    vim.fn.matchadd("Grepme", "grepme")
+    vim.fn.matchadd("Grepme", "GREPME")
   end,
 })
