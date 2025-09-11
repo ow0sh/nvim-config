@@ -1,5 +1,20 @@
 return {
   {
+    "nvim-cmp",
+    enabled = false,
+  },
+
+  {
+    "saghen/blink.cmp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+
+    version = "1.*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts_extend = { "sources.default" },
+  },
+
+  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
@@ -95,7 +110,7 @@ return {
           vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
         end,
       }
-      require("configs.lspconfig")
+      require "configs.lspconfig"
     end,
   },
 

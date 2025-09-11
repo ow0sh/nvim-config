@@ -19,6 +19,7 @@ local mini_files_config = require "configs.mini_files"
 local mini_pick_config = require "configs.mini_pick"
 local cloak_config = require "configs.cloak"
 -- local jdtls_config = require "configs.jdtls"
+local blink_config = require "configs.blink"
 
 require("lazy").setup({
   {
@@ -34,6 +35,7 @@ require("mini.files").setup(mini_files_config)
 require("mini.pick").setup(mini_pick_config)
 require("cloak").setup(cloak_config)
 -- require("jdtls").setup(jdtls_config)
+require("blink.cmp").setup(blink_config)
 
 vim.api.nvim_create_user_command("TermHl", function()
   local b = vim.api.nvim_create_buf(false, true)
