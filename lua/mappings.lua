@@ -14,8 +14,8 @@ map("i", "<S-Up>", "<esc>5ki")
 -- fast navigation
 map({ "n", "v" }, "<S-j>", "5j")
 map({ "n", "v" }, "<S-k>", "5k")
-map("n", "<S-l>", "w")
-map("n", "<S-h>", "b")
+map({ "n", "v" }, "<S-l>", "w")
+map({ "n", "v" }, "<S-h>", "b")
 
 -- -- navigation in code
 -- map("i", "<Leader>h", "<Left>")
@@ -69,4 +69,13 @@ map("n", ".", "")
 map("n", ",", "")
 
 
-vim.api.nvim_create_user_command("JSON", ":%!jq '.'", { bang = true, desc = "Format json file" })
+vim.api.nvim_create_user_command("JSON",   function()
+    vim.cmd("%!jq '.'")
+    vim.cmd("set foldmethod=indent")
+  end,{ bang = true, desc = "Format json file" })
+
+-- zc - Close the fold under the cursor. This will hide the object's fields.
+-- zo - Open a closed fold under the cursor.
+-- za - Toggle the fold under the cursor (opens it if closed, closes it if open).
+-- zR - Open All folds in the file.
+-- zM - Close All folds in the file.

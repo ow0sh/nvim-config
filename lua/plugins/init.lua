@@ -21,7 +21,6 @@ return {
         "gopls",
         "rust-analyzer",
         "vtsls",
-        "prettierd",
         "jdtls",
       },
     },
@@ -43,11 +42,6 @@ return {
         require("vgit").setup()
       end)
     end,
-  },
-
-  {
-    "powerman/vim-plugin-AnsiEsc",
-    cmd = "AnsiEsc",
   },
 
   {
@@ -123,6 +117,11 @@ return {
     build = function()
       vim.cmd [[silent! GoInstallDeps]]
     end,
+  },
+
+  {
+    "ray-x/go.nvim",
+    ft = { "go", "gomod" },
   },
 
   {
