@@ -17,7 +17,7 @@ vim.opt.wrap = false
 local lazy_config = require "configs.lazy"
 local mini_files_config = require "configs.mini_files"
 local cloak_config = require "configs.cloak_config"
-local blink_config = require "configs.blink"
+local blink_config = require "configs.blink_cmp"
 local conform_config = require "configs.conform_config"
 
 require("lazy").setup({
