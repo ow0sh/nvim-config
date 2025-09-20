@@ -1,5 +1,18 @@
 return {
   {
+    "nvim-cmp",
+    enabled = false,
+  },
+  {
+    "saghen/blink.cmp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+
+    version = "1.*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts_extend = { "sources.default" },
+  },
+  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
