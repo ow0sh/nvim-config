@@ -6,12 +6,7 @@ return {
     ["<Tab>"] = { "select_next", "fallback" },
   },
   cmdline = {
-    keymap = {
-      ["<A-;>"] = { "accept", "fallback" },
-      ["<S-Tab>"] = { "select_prev", "fallback" },
-      ["<Tab>"] = { "select_next", "fallback" },
-    },
-    completion = { menu = { auto_show = true } },
+    enabled = false,
   },
 
   completion = {
@@ -19,7 +14,7 @@ return {
       draw = {
         columns = {
           { "label", "label_description", gap = 1 },
-          { "kind_icon", "kind", gap = 1 },
+          { "kind_icon", "kind", gap = 5 },
         },
       },
     },

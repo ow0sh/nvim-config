@@ -1,8 +1,8 @@
 ---@type ChadrcConfig
-local M = {}
-
-M.base46 = {
-  theme = "vscode_dark",
+local M = {
+  base46 = {
+    theme = "vscode_dark",
+  },
 }
 
 M.plugins = "plugins"

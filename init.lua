@@ -16,10 +16,9 @@ vim.opt.wrap = false
 
 local lazy_config = require "configs.lazy"
 local mini_files_config = require "configs.mini_files"
-local mini_pick_config = require "configs.mini_pick"
-local cloak_config = require "configs.cloak"
--- local jdtls_config = require "configs.jdtls"
-local blink_config = require "configs.blink"
+local cloak_config = require "configs.cloak_config"
+local blink_config = require "configs.blink_cmp"
+local conform_config = require "configs.conform_config"
 
 require("lazy").setup({
   {
@@ -28,15 +27,34 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-
+  -- disable default NvChad plugins
+  { "nvim-cmp", enabled = false },
+  { "folke/which-key.nvim", enabled = false },
+  { "nvim-tree/nvim-tree.lua", enabled = false },
+  { "hrsh7th/nvim-cmp", enabled = false },
+  -- disable default NvChad plugins
   { import = "plugins" },
 }, lazy_config)
+
+require("telescope").setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<S-d>"] = require("telescope.actions").preview_scrolling_down,
+        ["<S-e>"] = require("telescope.actions").preview_scrolling_up,
+      },
+      n = {
+        ["<S-d>"] = require("telescope.actions").preview_scrolling_down,
+        ["<S-e>"] = require("telescope.actions").preview_scrolling_up,
+      },
+    },
+  },
+}
 require("mini.files").setup(mini_files_config)
-require("mini.pick").setup(mini_pick_config)
 require("cloak").setup(cloak_config)
 require("go").setup()
--- require("jdtls").setup(jdtls_config)
 require("blink.cmp").setup(blink_config)
+require("conform").setup(conform_config)
 
 vim.api.nvim_create_user_command("TermHl", function()
   local b = vim.api.nvim_create_buf(false, true)
@@ -53,6 +71,7 @@ require "nvchad.autocmds"
 
 vim.schedule(function()
   require "mappings"
+  require "commands"
 end)
 
 local myHighlights = vim.api.nvim_create_augroup("MyHighlights", { clear = true })

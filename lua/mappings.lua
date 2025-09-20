@@ -17,19 +17,9 @@ map({ "n", "v" }, "<S-k>", "5k")
 map({ "n", "v" }, "<S-l>", "w")
 map({ "n", "v" }, "<S-h>", "b")
 
--- -- navigation in code
--- map("i", "<Leader>h", "<Left>")
--- map("i", "<Leader>j", "<Down>")
--- map("i", "<Leader>k", "<Up>")
--- map("i", "<Leader>l", "<Right>")
-
 map("n", "1", function()
   require("mini.files").open()
 end)
-
-local miniPick = require "mini.pick"
-vim.api.nvim_create_user_command("Grep", miniPick.builtin.grep_live, { bang = true, desc = "Preview VGit logs" })
-vim.api.nvim_create_user_command("Files", miniPick.builtin.files, { bang = true, desc = "Preview VGit diff" })
 
 map("n", "<C-r>", ":GoFillStruct<CR>", {})
 map("n", "<C-R>", ":GoFillStruct<CR>", {})
@@ -56,23 +46,16 @@ map("n", "E", "<C-u>")
 map("n", "D", "<C-d>")
 map("n", "<A-t>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 
--- VGit mappings
-vim.api.nvim_create_user_command("Logs", "VGit project_logs_preview", { bang = true, desc = "Preview VGit logs" })
-vim.api.nvim_create_user_command("Diff", "VGit project_diff_preview", { bang = true, desc = "Preview VGit diff" })
-
--- typos
-vim.api.nvim_create_user_command("Qa", "qa", { bang = true, desc = "Typo for :qa" })
 map("n", "I", "i")
 map("n", "O", "i")
 map("n", "o", "i")
 map("n", ".", "")
 map("n", ",", "")
 
-
-vim.api.nvim_create_user_command("JSON",   function()
-    vim.cmd("%!jq '.'")
-    vim.cmd("set foldmethod=indent")
-  end,{ bang = true, desc = "Format json file" })
+vim.api.nvim_create_user_command("JSON", function()
+  vim.cmd "%!jq '.'"
+  vim.cmd "set foldmethod=indent"
+end, { bang = true, desc = "Format json file" })
 
 -- zc - Close the fold under the cursor. This will hide the object's fields.
 -- zo - Open a closed fold under the cursor.
