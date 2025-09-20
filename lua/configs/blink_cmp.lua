@@ -6,12 +6,7 @@ return {
     ["<Tab>"] = { "select_next", "fallback" },
   },
   cmdline = {
-    keymap = {
-      ["<A-;>"] = { "accept", "fallback" },
-      ["<S-Tab>"] = { "select_prev", "fallback" },
-      ["<Tab>"] = { "select_next", "fallback" },
-    },
-    completion = { menu = { auto_show = true } },
+    enabled = false
   },
 
   completion = {
