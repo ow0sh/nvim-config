@@ -52,13 +52,15 @@ map("n", "o", "i")
 map("n", ".", "")
 map("n", ",", "")
 
-vim.api.nvim_create_user_command("JSON", function()
-  vim.cmd "%!jq '.'"
-  vim.cmd "set foldmethod=indent"
-end, { bang = true, desc = "Format json file" })
+vim.api.nvim_create_user_command("Qa", "qa", { bang = true, desc = "Typo for :qa" })
+vim.api.nvim_create_user_command("QA", "qa", { bang = true, desc = "Typo for :qa" })
 
--- zc - Close the fold under the cursor. This will hide the object's fields.
--- zo - Open a closed fold under the cursor.
--- za - Toggle the fold under the cursor (opens it if closed, closes it if open).
--- zR - Open All folds in the file.
--- zM - Close All folds in the file.
+vim.api.nvim_create_user_command("Wqa", "wqa", { bang = true, desc = "Typo for :wqa" })
+vim.api.nvim_create_user_command("WQa", "wqa", { bang = true, desc = "Typo for :wqa" })
+vim.api.nvim_create_user_command("WQA", "wqa", { bang = true, desc = "Typo for :wqa" })
+
+vim.api.nvim_create_user_command("Wq", "wq", { bang = true, desc = "Typo for :wq" })
+vim.api.nvim_create_user_command("WQ", "wq", { bang = true, desc = "Typo for :wq" })
+
+vim.api.nvim_create_user_command("W", "w", { bang = true, desc = "Typo for :w" })
+vim.api.nvim_create_user_command("Q", "q", { bang = true, desc = "Typo for :q" })
