@@ -1,13 +1,13 @@
 return {
   -- Customization of shown content
-  content = {
-    -- Predicate for which file system entries to show
-    filter = nil,
-    -- What prefix to show to the left of file system entry
-    prefix = nil,
-    -- In which order to show file system entries
-    sort = nil,
-  },
+  -- content = {
+  --   -- Predicate for which file system entries to show
+  --   filter = nil,
+  --   -- What prefix to show to the left of file system entry
+  --   prefix = nil,
+  --   -- In which order to show file system entries
+  --   sort = nil,
+  -- },
 
   -- Module mappings created only inside explorer.
   -- Use `''` (empty string) to not create one.
