@@ -38,12 +38,12 @@ require("telescope").setup {
   defaults = {
     mappings = {
       i = {
-        ["<S-d>"] = require("telescope.actions").preview_scrolling_down,
-        ["<S-e>"] = require("telescope.actions").preview_scrolling_up,
+        ["<D-d>"] = require("telescope.actions").preview_scrolling_down,
+        ["<D-e>"] = require("telescope.actions").preview_scrolling_up,
       },
       n = {
-        ["<S-d>"] = require("telescope.actions").preview_scrolling_down,
-        ["<S-e>"] = require("telescope.actions").preview_scrolling_up,
+        ["<D-d>"] = require("telescope.actions").preview_scrolling_down,
+        ["<D-e>"] = require("telescope.actions").preview_scrolling_up,
       },
     },
   },

@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {
   base46 = {
-    theme = "vscode_dark",
+    theme = "melange",
   },
 }
 
