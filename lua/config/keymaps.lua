@@ -4,6 +4,14 @@
 
 local map = vim.keymap.set
 
+vim.keymap.set("n", "<Tab>", "<Cmd>bnext<CR>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<S-Tab>", "<Cmd>bprevious<CR>", { desc = "Previous Buffer" })
+
+vim.keymap.set("n", "<A-w>", "<Cmd>bdelete<CR>", { desc = "Close Buffer" })
+vim.keymap.set("n", "<A-W>", "<Cmd>bdelete<CR>", { desc = "Close Buffer one more" })
+vim.keymap.set("n", "<A-l>", "<Cmd>bnext<CR>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<A-h>", "<Cmd>bprevious<CR>", { desc = "Previous Buffer" })
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map({ "n", "v" }, "<Bslash>", "i")
@@ -27,22 +35,6 @@ map("n", "<C-r>", ":GoFillStruct<CR>", {})
 map("n", "<C-R>", ":GoFillStruct<CR>", {})
 map("i", "<C-r>", ":GoFillStruct<CR>", {})
 map("i", "<C-R>", ":GoFillStruct<CR>", {})
-
-map("n", "<A-l>", function()
-  require("nvchad.tabufline").next()
-end, { desc = "tab next" })
-
-map("n", "<A-h>", function()
-  require("nvchad.tabufline").prev()
-end, { desc = "tab prev" })
-
-map("n", "<A-w>", function()
-  require("nvchad.tabufline").close_buffer()
-end, { desc = "close tab" })
-
-map("n", "<A-W>", function()
-  require("nvchad.tabufline").close_buffer()
-end, { desc = "close tab" })
 
 map("n", "E", "<C-u>")
 map("n", "D", "<C-d>")

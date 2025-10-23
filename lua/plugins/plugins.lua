@@ -5,16 +5,6 @@ return {
   },
 
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
-
-  {
-    "nvim-mini/mini.nvim",
-    version = false,
-  },
-
-  {
     "ray-x/go.nvim",
     ft = { "go", "gomod" },
   },
