@@ -2,15 +2,16 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+vim.keymap.set("n", "1", ":Neotree toggle<CR>", {})
 local map = vim.keymap.set
 
-vim.keymap.set("n", "<Tab>", "<Cmd>bnext<CR>", { desc = "Next Buffer" })
-vim.keymap.set("n", "<S-Tab>", "<Cmd>bprevious<CR>", { desc = "Previous Buffer" })
+map("n", "<Tab>", "<Cmd>bnext<CR>", { desc = "Next Buffer" })
+map("n", "<S-Tab>", "<Cmd>bprevious<CR>", { desc = "Previous Buffer" })
 
-vim.keymap.set("n", "<A-w>", "<Cmd>bdelete<CR>", { desc = "Close Buffer" })
-vim.keymap.set("n", "<A-W>", "<Cmd>bdelete<CR>", { desc = "Close Buffer one more" })
-vim.keymap.set("n", "<A-l>", "<Cmd>bnext<CR>", { desc = "Next Buffer" })
-vim.keymap.set("n", "<A-h>", "<Cmd>bprevious<CR>", { desc = "Previous Buffer" })
+map("n", "<A-w>", "<Cmd>bdelete<CR>", { desc = "Close Buffer" })
+map("n", "<A-W>", "<Cmd>bdelete<CR>", { desc = "Close Buffer one more" })
+map("n", "<A-l>", "<Cmd>bnext<CR>", { desc = "Next Buffer" })
+map("n", "<A-h>", "<Cmd>bprevious<CR>", { desc = "Previous Buffer" })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
@@ -26,10 +27,6 @@ map({ "n", "v" }, "<S-j>", "5j")
 map({ "n", "v" }, "<S-k>", "5k")
 map({ "n", "v" }, "<S-l>", "w")
 map({ "n", "v" }, "<S-h>", "b")
-
-map("n", "1", function()
-  require("mini.files").open()
-end)
 
 map("n", "<C-r>", ":GoFillStruct<CR>", {})
 map("n", "<C-R>", ":GoFillStruct<CR>", {})

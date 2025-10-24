@@ -22,3 +22,4 @@ require("blink.cmp").setup(blink_config)
 
 -- vim.diagnostic.disable(0)
 vim.diagnostic.enable(false, _)
+vim.cmd("Neotree toggle")
