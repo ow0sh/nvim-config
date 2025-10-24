@@ -2,7 +2,6 @@ local builtin = require "telescope.builtin"
 vim.api.nvim_create_user_command("Grep", builtin.live_grep, { desc = "Telescope live grep" })
 vim.api.nvim_create_user_command("Files", builtin.find_files, { desc = "Telescope find files" })
 vim.api.nvim_create_user_command("Logs", builtin.git_commits, { desc = "Telescope git log --oneline" })
--- vim.api.nvim_create_user_command("Diff", builtin.git_status, { desc = "Telescope git diff" }) -- experiment with this one
 vim.api.nvim_create_user_command("Diff", "VGit project_diff_preview", { desc = "VGIT git diff" })
 vim.api.nvim_create_user_command("Branches", builtin.git_branches, { desc = "Telescope git branch" })
 

@@ -46,6 +46,21 @@ require("telescope").setup {
         ["<D-e>"] = require("telescope.actions").preview_scrolling_up,
       },
     },
+    pickers = {
+      live_grep = {
+        file_ignore_patterns = {
+          ".*_test%.go$",
+          ".*_test%.py$",
+          ".*%.test%.js$",
+          ".*%.test%.ts$",
+          ".*%.spec%.js$",
+          ".*%.spec%.ts$",
+          "test/.*",
+          "tests/.*",
+          "__tests__/.*",
+        },
+      },
+    },
   },
 }
 require("mini.files").setup(mini_files_config)
