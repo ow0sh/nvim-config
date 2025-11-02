@@ -2,7 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.keymap.set("n", "1", ":Neotree toggle<CR>", {})
 local map = vim.keymap.set
 
 map("n", "<Tab>", "<Cmd>bnext<CR>", { desc = "Next Buffer" })

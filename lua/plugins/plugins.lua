@@ -8,11 +8,6 @@ return {
   },
 
   {
-    "folke/which-key.nvim",
-    enabled = false,
-  },
-
-  {
     "ray-x/go.nvim",
     ft = { "go", "gomod" },
   },
@@ -46,9 +41,9 @@ return {
           },
         },
       },
-      inlay_hints = {
-        enabled = false,
-      },
+      -- inlay_hints = {
+      --   enabled = false,
+      -- },
     },
   },
 
@@ -59,14 +54,5 @@ return {
         enabled = false, -- Disable scrolling animations
       },
     },
-  },
-
-  {
-    "saghen/blink.cmp",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    version = "1.*",
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts_extend = { "sources.default" },
   },
 }
