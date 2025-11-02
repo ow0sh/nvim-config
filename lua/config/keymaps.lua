@@ -42,16 +42,3 @@ map("n", "O", "i")
 map("n", "o", "i")
 map("n", ".", "")
 map("n", ",", "")
-
-vim.api.nvim_create_user_command("Qa", "qa", { bang = true, desc = "Typo for :qa" })
-vim.api.nvim_create_user_command("QA", "qa", { bang = true, desc = "Typo for :qa" })
-
-vim.api.nvim_create_user_command("Wqa", "wqa", { bang = true, desc = "Typo for :wqa" })
-vim.api.nvim_create_user_command("WQa", "wqa", { bang = true, desc = "Typo for :wqa" })
-vim.api.nvim_create_user_command("WQA", "wqa", { bang = true, desc = "Typo for :wqa" })
-
-vim.api.nvim_create_user_command("Wq", "wq", { bang = true, desc = "Typo for :wq" })
-vim.api.nvim_create_user_command("WQ", "wq", { bang = true, desc = "Typo for :wq" })
-
-vim.api.nvim_create_user_command("W", "w", { bang = true, desc = "Typo for :w" })
-vim.api.nvim_create_user_command("Q", "q", { bang = true, desc = "Typo for :q" })

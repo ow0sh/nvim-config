@@ -1,9 +1,9 @@
 return {
   keymap = {
-    preset = "none",
-    ["<CR>"] = { "accept", "fallback" },
-    ["<S-Tab>"] = { "select_prev", "fallback" },
-    ["<Tab>"] = { "select_next", "fallback" },
+    preset = "default",
+    ["<CR>"] = { "accept", "snippet_forward", "fallback" },
+    ["<S-Tab>"] = { "select_prev", "snippet_forward", "fallback" },
+    ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
   },
   cmdline = {
     enabled = false,
@@ -13,10 +13,13 @@ return {
     menu = {
       draw = {
         columns = {
-          { "label", "label_description", gap = 1 },
-          { "kind_icon", "kind", gap = 5 },
+          { "label",     "label_description", gap = 1 },
+          { "kind_icon", "kind",              gap = 5 },
         },
       },
+    },
+    list = {
+      selection = "manual",
     },
     documentation = { auto_show = true, auto_show_delay_ms = 200 },
   },

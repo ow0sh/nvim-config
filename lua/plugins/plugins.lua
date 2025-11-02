@@ -33,29 +33,40 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
+  },
+
+  {
+    "neovim/nvim-lspconfig",
     opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
+      servers = {
+        ["*"] = {
+          keys = {
+            { "K", false, mode = "n" },
+            { "<S-k>", false, mode = { "n", "i" } },
+          },
+        },
+      },
+      inlay_hints = {
+        enabled = false,
       },
     },
   },
 
   {
-    "neovim/nvim-lspconfig",
+    "folke/snacks.nvim",
+    opts = {
+      scroll = {
+        enabled = false, -- Disable scrolling animations
+      },
+    },
+  },
 
-    opts = function(_, opts)
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-
-      keys[#keys + 1] = { "K", false, mode = "n" }
-      keys[#keys + 1] = { "<S-k>", false, mode = { "n", "i" } } -- Check both modes
-
-      opts.inlay_hints = {
-        enabled = false,
-      }
-      return opts
-    end,
+  {
+    "saghen/blink.cmp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    version = "1.*",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts_extend = { "sources.default" },
   },
 }
