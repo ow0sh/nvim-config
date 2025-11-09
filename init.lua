@@ -1,22 +1,29 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
-vim.g.mapleader = " "
-vim.keymap.set("n", "d", '"*d')
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-
-if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+local function safe_require(module)
+  local ok, result = pcall(require, module)
+  if not ok then
+    vim.notify("Failed to load config: " .. module, vim.log.levels.ERROR)
+    return {}
+  end
+  return result
 end
 
-vim.opt.termguicolors = true
-vim.opt.rtp:prepend(lazypath)
-vim.opt.wrap = false
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
+vim.g.mapleader = " "
 
-local lazy_config = require "configs.lazy"
-local mini_files_config = require "configs.mini_files"
-local cloak_config = require "configs.cloak_config"
-local blink_config = require "configs.blink_cmp"
-local conform_config = require "configs.conform_config"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    repo,
+    "--branch=stable",
+    lazypath,
+  }
+end
+
+vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
@@ -25,81 +32,34 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-  -- disable default NvChad plugins
-  { "nvim-cmp", enabled = false },
-  { "folke/which-key.nvim", enabled = false },
-  { "nvim-tree/nvim-tree.lua", enabled = false },
-  { "hrsh7th/nvim-cmp", enabled = false },
-  -- disable default NvChad plugins
   { import = "plugins" },
-}, lazy_config)
+}, safe_require "configs.lazy")
 
-require("telescope").setup {
-  defaults = {
-    mappings = {
-      i = {
-        ["<D-d>"] = require("telescope.actions").preview_scrolling_down,
-        ["<D-e>"] = require("telescope.actions").preview_scrolling_up,
-      },
-      n = {
-        ["<D-d>"] = require("telescope.actions").preview_scrolling_down,
-        ["<D-e>"] = require("telescope.actions").preview_scrolling_up,
-      },
-    },
-    pickers = {
-      live_grep = {
-        file_ignore_patterns = {
-          ".*_test%.go$",
-          ".*_test%.py$",
-          ".*%.test%.js$",
-          ".*%.test%.ts$",
-          ".*%.spec%.js$",
-          ".*%.spec%.ts$",
-          "test/.*",
-          "tests/.*",
-          "__tests__/.*",
-        },
-      },
-    },
-  },
+local configs = {
+  { plugin = "telescope", config = "configs.telescope_config" },
+  { plugin = "mini.files", config = "configs.mini_files" },
+  { plugin = "cloak", config = "configs.cloak_config" },
+  { plugin = "blink.cmp", config = "configs.blink_cmp" },
+  { plugin = "conform", config = "configs.conform_config" },
+  { plugin = "vgit" },
+  { plugin = "go" },
 }
-require("mini.files").setup(mini_files_config)
-require("cloak").setup(cloak_config)
-require("go").setup()
-require("blink.cmp").setup(blink_config)
-require("conform").setup(conform_config)
 
-vim.api.nvim_create_user_command("TermHl", function()
-  local b = vim.api.nvim_create_buf(false, true)
-  local chan = vim.api.nvim_open_term(b, {})
-  vim.api.nvim_chan_send(chan, table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n"))
-  vim.api.nvim_win_set_buf(0, b)
-end, { desc = "Highlights ANSI termcodes in curbuf" })
+for _, item in ipairs(configs) do
+  local ok, plugin = pcall(require, item.plugin)
+  if ok then
+    local config = item.config and safe_require(item.config) or {}
+    plugin.setup(config)
+  end
+end
 
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
+pcall(dofile, vim.g.base46_cache .. "defaults")
+pcall(dofile, vim.g.base46_cache .. "statusline")
 
-require "options"
-require "nvchad.autocmds"
+safe_require "options"
+safe_require "nvchad.autocmds"
 
 vim.schedule(function()
-  require "mappings"
-  require "commands"
+  safe_require "mappings"
+  safe_require "commands"
 end)
-
-local myHighlights = vim.api.nvim_create_augroup("MyHighlights", { clear = true })
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = myHighlights,
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "Govno", { link = "Todo" })
-    vim.api.nvim_set_hl(0, "Grepme", { link = "Todo" })
-
-    vim.fn.matchadd("Govno", "GOVNO")
-    vim.fn.matchadd("Govno", "govno")
-
-    vim.fn.matchadd("Grepme", "grepme")
-    vim.fn.matchadd("Grepme", "GREPME")
-  end,
-})

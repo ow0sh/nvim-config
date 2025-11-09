@@ -1,19 +1,23 @@
-local builtin = require "telescope.builtin"
-vim.api.nvim_create_user_command("Grep", builtin.live_grep, { desc = "Telescope live grep" })
-vim.api.nvim_create_user_command("Files", builtin.find_files, { desc = "Telescope find files" })
-vim.api.nvim_create_user_command("Logs", builtin.git_commits, { desc = "Telescope git log --oneline" })
-vim.api.nvim_create_user_command("Diff", "VGit project_diff_preview", { desc = "VGIT git diff" })
-vim.api.nvim_create_user_command("Branches", builtin.git_branches, { desc = "Telescope git branch" })
+local myHighlights = vim.api.nvim_create_augroup("MyHighlights", { clear = true })
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = myHighlights,
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "Govno", { link = "Todo" })
+    vim.api.nvim_set_hl(0, "Grepme", { link = "Todo" })
+
+    vim.fn.matchadd("Govno", "GOVNO")
+    vim.fn.matchadd("Govno", "govno")
+
+    vim.fn.matchadd("Grepme", "grepme")
+    vim.fn.matchadd("Grepme", "GREPME")
+  end,
+})
 
 vim.api.nvim_create_user_command("JSON", function()
   vim.cmd "%!jq '.'"
   vim.cmd "set foldmethod=indent"
 end, { bang = true, desc = "Format json file" })
--- zc - Close the fold under the cursor. This will hide the object's fields.
--- zo - Open a closed fold under the cursor.
--- za - Toggle the fold under the cursor (opens it if closed, closes it if open).
--- zR - Open All folds in the file.
--- zM - Close All folds in the file.
 
 vim.api.nvim_create_user_command("FormatDisable", function(args)
   if args.bang then
@@ -31,3 +35,16 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
   desc = "Re-enable autoformat-on-save",
 })
+
+vim.api.nvim_create_user_command("Qa", "qa", { bang = true, desc = "Typo for :qa" })
+vim.api.nvim_create_user_command("QA", "qa", { bang = true, desc = "Typo for :qa" })
+
+vim.api.nvim_create_user_command("Wqa", "wqa", { bang = true, desc = "Typo for :wqa" })
+vim.api.nvim_create_user_command("WQa", "wqa", { bang = true, desc = "Typo for :wqa" })
+vim.api.nvim_create_user_command("WQA", "wqa", { bang = true, desc = "Typo for :wqa" })
+
+vim.api.nvim_create_user_command("Wq", "wq", { bang = true, desc = "Typo for :wq" })
+vim.api.nvim_create_user_command("WQ", "wq", { bang = true, desc = "Typo for :wq" })
+
+vim.api.nvim_create_user_command("W", "w", { bang = true, desc = "Typo for :w" })
+vim.api.nvim_create_user_command("Q", "q", { bang = true, desc = "Typo for :q" })

@@ -1,4 +1,5 @@
 ---@type ChadrcConfig
+---@class config
 local M = {
   base46 = {
     theme = "melange",

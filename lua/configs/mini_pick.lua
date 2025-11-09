@@ -1,15 +1,9 @@
 return {
-  -- No need to copy this inside `setup()`. Will be used automatically.
-  -- Delays (in ms; should be at least 1)
   delay = {
-    -- Delay between forcing asynchronous behavior
     async = 10,
-
-    -- Delay between computation start and visual feedback about it
     busy = 50,
   },
 
-  -- Keys for performing actions. See `:h MiniPick-actions`.
   mappings = {
     caret_left = "<Left>",
     caret_right = "<Right>",
@@ -48,38 +42,25 @@ return {
     toggle_preview = "<Tab>",
   },
 
-  -- General options
   options = {
-    -- Whether to show content from bottom to top
     content_from_bottom = false,
-
-    -- Whether to cache matches (more speed and memory on repeated prompts)
     use_cache = false,
   },
 
-  -- Source definition. See `:h MiniPick-source`.
   source = {
     items = nil,
     name = nil,
     cwd = nil,
-
     match = nil,
     show = nil,
     preview = nil,
-
     choose = nil,
     choose_marked = nil,
   },
 
-  -- Window related options
   window = {
-    -- Float window config (table or callable returning it)
     config = nil,
-
-    -- String to use as caret in prompt
     prompt_caret = "▏",
-
-    -- String to use as prefix in prompt
     prompt_prefix = "> ",
   },
 }
