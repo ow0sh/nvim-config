@@ -1,10 +1,18 @@
 local builtin = require "telescope.builtin"
 
 local map_command = vim.api.nvim_create_user_command
+local map = vim.keymap.set
 map_command("Grep", builtin.live_grep, { desc = "Telescope live grep" })
+map("n", "<leader>g", builtin.live_grep)
+
 map_command("Files", builtin.find_files, { desc = "Telescope find files" })
+map("n", "<leader>f", builtin.find_files)
+
 map_command("Logs", builtin.git_commits, { desc = "Telescope git log --oneline" })
+
 map_command("Diff", "VGit project_diff_preview", { desc = "Telescope git diff" })
+map("n", "<leader>d", builtin.find_files)
+
 map_command("Branches", builtin.git_branches, { desc = "Telescope git branch" })
 
 local actions = require "telescope.actions"

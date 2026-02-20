@@ -2,7 +2,13 @@
 ---@class config
 local M = {
   base46 = {
-    theme = "melange",
+    theme = "ayu_dark",
+  },
+  ui = {
+    tabufline = {
+      enabled = true,
+      lazyload = false,
+    },
   },
 }
 

@@ -1,8 +1,30 @@
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
+    config = function()
+      require("nvim-treesitter").setup({
+        ensure_installed = { "lua", "vim", "vimdoc", "go", "gomod", "gosum" },
+      })
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
+    end,
+  },
+
+  {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "marcussimonsen/let-it-snow.nvim",
+    cmd = "LetItSnow", -- Wait with loading until command is run
+    opts = {},
   },
 
   {
