@@ -17,10 +17,6 @@ map({ "n", "v" }, "<S-k>", "5k")
 map({ "n", "v" }, "<S-l>", "w")
 map({ "n", "v" }, "<S-h>", "b")
 
-map("n", "1", function()
-  require("mini.files").open()
-end)
-
 map("n", "<C-r>", ":GoFillStruct<CR>", {})
 map("n", "<C-R>", ":GoFillStruct<CR>", {})
 map("i", "<C-r>", ":GoFillStruct<CR>", {})

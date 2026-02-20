@@ -5,9 +5,9 @@ return {
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter").setup({
+      require("nvim-treesitter").setup {
         ensure_installed = { "lua", "vim", "vimdoc", "go", "gomod", "gosum" },
-      })
+      }
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
           pcall(vim.treesitter.start)
@@ -37,11 +37,6 @@ return {
   { "laytan/cloak.nvim" },
 
   {
-    "echasnovski/mini.nvim",
-    version = false,
-  },
-
-  {
     "ray-x/go.nvim",
     ft = { "go", "gomod" },
   },
@@ -69,5 +64,11 @@ return {
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
+  },
+
+  {
+    "folke/snacks.nvim",
+    lazy = false,
+    priority = 1000,
   },
 }

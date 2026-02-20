@@ -41,6 +41,7 @@ local configs = {
   { plugin = "cloak", config = "configs.cloak_config" },
   { plugin = "blink.cmp", config = "configs.blink_cmp" },
   { plugin = "conform", config = "configs.conform_config" },
+  { plugin = "snacks", config = "configs.snacks_explorer" },
   { plugin = "vgit" },
   { plugin = "go" },
 }

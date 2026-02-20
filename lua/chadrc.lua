@@ -2,7 +2,7 @@
 ---@class config
 local M = {
   base46 = {
-    theme = "ayu_dark",
+    theme = "material-darker",
   },
   ui = {
     tabufline = {

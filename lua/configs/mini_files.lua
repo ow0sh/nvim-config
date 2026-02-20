@@ -1,3 +1,7 @@
+map("n", "1", function()
+  require("mini.files").open()
+end)
+
 return {
   content = {
     filter = nil,
