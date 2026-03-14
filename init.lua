@@ -7,6 +7,7 @@ local function safe_require(module)
   return result
 end
 
+vim.opt.swapfile = false
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
@@ -64,3 +65,16 @@ vim.schedule(function()
   safe_require "mappings"
   safe_require "commands"
 end)
+
+-- Define custom highlight groups for TODO and grepme
+vim.api.nvim_set_hl(0, "TodoHighlight", { fg = "#FFFF00", bg = "#3B3B00", bold = true })
+vim.api.nvim_set_hl(0, "GrepmeHighlight", { fg = "#FF00FF", bg = "#3B003B", bold = true })
+
+-- Highlight TODO and grepme keywords
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "*",
+  callback = function()
+    vim.fn.matchadd("TodoHighlight", "\\<TODO\\>")
+    vim.fn.matchadd("GrepmeHighlight", "\\<grepme\\>")
+  end,
+})

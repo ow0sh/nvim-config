@@ -12,6 +12,15 @@ vim.lsp.config["gopls"] = {
     gopls = {
       completeUnimported = true,
       usePlaceholders = true,
+      -- staticcheck = true,
+      analyses = {
+        unusedparams = true,
+        -- shadow = true,
+        nilness = true,
+        unusedwrite = true,
+        useany = true,
+        -- ST1003 = true,
+      },
     },
   },
 }

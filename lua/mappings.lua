@@ -2,6 +2,8 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+vim.keymap.del("n", "<leader>gt")
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map({ "n", "v" }, "<Bslash>", "i")
