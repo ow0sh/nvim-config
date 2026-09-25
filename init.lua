@@ -8,6 +8,7 @@ local function safe_require(module)
 end
 
 vim.opt.swapfile = false
+vim.opt.wrap = false
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
@@ -43,7 +44,7 @@ local configs = {
   { plugin = "blink.cmp", config = "configs.blink_cmp" },
   { plugin = "conform", config = "configs.conform_config" },
   { plugin = "snacks", config = "configs.snacks_explorer" },
-  { plugin = "vgit" },
+  { plugin = "vgit", config = "configs.vgit" },
   { plugin = "go" },
 }
 
@@ -57,6 +58,11 @@ end
 
 pcall(dofile, vim.g.base46_cache .. "defaults")
 pcall(dofile, vim.g.base46_cache .. "statusline")
+
+local system_theme = safe_require "configs.system_theme"
+if system_theme.setup then
+  system_theme.setup()
+end
 
 safe_require "options"
 safe_require "nvchad.autocmds"
@@ -76,5 +82,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   callback = function()
     vim.fn.matchadd("TodoHighlight", "\\<TODO\\>")
     vim.fn.matchadd("GrepmeHighlight", "\\<grepme\\>")
+    vim.fn.matchadd("TodoHighlight", "\\<DEPRECATED\\>")
   end,
 })

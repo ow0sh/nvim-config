@@ -6,7 +6,19 @@ return {
     build = ":TSUpdate",
     config = function()
       require("nvim-treesitter").setup {
-        ensure_installed = { "lua", "vim", "vimdoc", "go", "gomod", "gosum" },
+        ensure_installed = {
+          "lua",
+          "vim",
+          "vimdoc",
+          "go",
+          "gomod",
+          "gosum",
+          "java",
+          "javascript",
+          "typescript",
+          "tsx",
+          "json",
+        },
       }
       vim.api.nvim_create_autocmd("FileType", {
         callback = function()
@@ -37,6 +49,22 @@ return {
   { "laytan/cloak.nvim" },
 
   {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    event = "VeryLazy",
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {
+      ensure_installed = {
+        "jdtls",
+        "google-java-format",
+        "typescript-language-server",
+        "eslint-lsp",
+        "prettier",
+      },
+      run_on_start = true,
+    },
+  },
+
+  {
     "ray-x/go.nvim",
     ft = { "go", "gomod" },
   },
@@ -60,7 +88,18 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
-    ft = { "lua", "go" },
+    ft = {
+      "lua",
+      "go",
+      "java",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "json",
+      "css",
+      "html",
+    },
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,

@@ -2,7 +2,7 @@
 ---@class config
 local M = {
   base46 = {
-    theme = "material-darker",
+    theme = require("configs.system_theme").current(),
   },
   ui = {
     tabufline = {

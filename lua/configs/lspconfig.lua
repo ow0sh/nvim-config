@@ -38,5 +38,22 @@ vim.lsp.config["rust_analyzer"] = {
   },
 }
 
+vim.lsp.config["ts_ls"] = {
+  on_init = nvlsp.on_init,
+  on_attach = nvlsp.on_attach,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+}
+
+vim.lsp.config["eslint"] = {
+  on_init = nvlsp.on_init,
+  on_attach = nvlsp.on_attach,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+}
+
+vim.lsp.enable("jdtls", true)
 vim.lsp.enable("rust_analyzer", true)
 vim.lsp.enable("gopls", true)
+vim.lsp.enable("ts_ls", true)
+vim.lsp.enable("eslint", true)

@@ -2,6 +2,14 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     go = { "gofmt" },
+    java = { "google-java-format" },
+    javascript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescript = { "prettier" },
+    typescriptreact = { "prettier" },
+    json = { "prettier" },
+    css = { "prettier" },
+    html = { "prettier" },
   },
   format_on_save = function(bufnr)
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
